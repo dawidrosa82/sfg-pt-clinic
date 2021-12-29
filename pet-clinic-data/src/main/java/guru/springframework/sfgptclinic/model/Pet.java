@@ -2,7 +2,7 @@ package guru.springframework.sfgptclinic.model;
 
 import java.time.LocalDate;
 
-public class Pet {
+public class Pet extends  BaseEntity {
     public Long getId() {
         return id;
     }
