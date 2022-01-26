@@ -7,6 +7,10 @@ import guru.springframework.sfgptclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -47,7 +51,15 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet1);
 
         System.out.println("Load Vets...");
-        
 
+        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        SimpleDateFormat mirusFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date date = format.parse((String)"2021-07-03T00:00:00.000+0200");
+        mirusFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String   result = mirusFormat.format(date);
+        System.out.println( result);
+        String date1 = format.format(new Date());
+        System.out.println(TimeZone.getDefault());
     }
 }
